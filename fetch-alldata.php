@@ -1,9 +1,23 @@
 <?php 
- include('db-connection.php');
 
- $alldata = 'Select * from student';
+header('Content_Type:application/json');
+header('Acess-Control-Allow-Origin: *');
 
- $result = mysqli_query($con)
+include('db-connection.php');
 
+$data= 'Select * from student';
+
+$result =mysqli_query($con, $data) or die('query faild');
+
+if(mysqli_num_rows($result)>0)
+{
+    $output = mysqli_fetch_all($result , MYSQLI_ASSOC);
+
+    echo json_encode($output);
+}
+else
+{
+    echo json_encode(['message'=> 'Data Not found']);
+}
 
 ?>

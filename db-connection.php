@@ -1,6 +1,5 @@
 <?php 
 
-$con = mysqli_connection('localhost','root', "",'test')
-or die('db connection failed ...')
+$con =mysqli_connect('localhost','root','','test') or die('db connection failde')
 
 ?>
